@@ -35,3 +35,12 @@ module "staging_bucket" {
   bucket_name = "${var.project_name}-staging-bucket"
   aws_region = "${var.aws_region}"
 }
+
+# Security groups
+module "security_groups" {
+  source = "security_group"
+  name = "${var.project_name}"
+  vpc_id = "${module.vpc.vpc-id}"
+  public_ports = ["${var.public_ports}"]
+  whitelisted_cidrs = ["${module.vpc.private-subnet-cidr}", "${module.vpc.public-subnet-cidr}"]
+}

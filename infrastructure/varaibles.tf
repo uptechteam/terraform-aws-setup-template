@@ -26,3 +26,8 @@ variable "vpc_subnets_cidrs" {
     private = "10.0.0.32/27"
   }
 }
+
+variable "public_ports" {
+  type = "list"
+  default = [22, 80, 443]
+}
