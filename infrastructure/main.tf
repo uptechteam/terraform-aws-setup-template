@@ -99,3 +99,18 @@ module "staging_postgres" {
   password = "${var.staging_db_password}"
   db_name = "${var.staging_db_name}"
 }
+
+# Route53
+module "dev_subdomain" {
+  source = "route53"
+  domain_name = "${var.route53_domain_name}"
+  subdomain = "dev.${var.project_name}"
+  ip = "${module.dev_instance.instance_ip}"
+}
+
+module "staging_subdomain" {
+  source = "route53"
+  domain_name = "${var.route53_domain_name}"
+  subdomain = "staging.${var.project_name}"
+  ip = "${module.staging_instance.instance_ip}"
+}

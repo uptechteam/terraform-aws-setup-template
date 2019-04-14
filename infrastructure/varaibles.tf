@@ -8,7 +8,7 @@ variable "aws_access_key" {
 
 variable "aws_secret_key" {
   type = "string"
-} 
+}
 
 variable "aws_region" {
   type = "string"
@@ -88,3 +88,6 @@ variable "staging_db_name" {
   type = "string"
 }
 
+variable "route53_domain_name" {
+  type = "string"
+}
