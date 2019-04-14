@@ -20,3 +20,18 @@ module "service_iam" {
   source = "iam"
   username = "${var.project_name}-service-user"
 }
+
+# S3
+module "dev_bucket" {
+  source = "s3"
+  user_arn = "${module.service_iam.iam_user_arn}"
+  bucket_name = "${var.project_name}-dev-bucket"
+  aws_region = "${var.aws_region}"
+}
+
+module "staging_bucket" {
+  source = "s3"
+  user_arn = "${module.service_iam.iam_user_arn}"
+  bucket_name = "${var.project_name}-staging-bucket"
+  aws_region = "${var.aws_region}"
+}
