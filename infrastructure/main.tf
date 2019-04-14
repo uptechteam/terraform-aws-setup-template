@@ -15,3 +15,8 @@ module "vpc" {
   aws_region = "${var.aws_region}"
 }
 
+#IAM
+module "service_iam" {
+  source = "iam"
+  username = "${var.project_name}-service-user"
+}
