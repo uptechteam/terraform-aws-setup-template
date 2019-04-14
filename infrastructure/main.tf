@@ -4,3 +4,14 @@ terraform {
     encrypt = true
   }
 }
+
+
+# VPC
+module "vpc" {
+  source = "vpc"
+  name = "${var.project_name}"
+  cidr = "${var.vpc_cidr}"
+  subnets_cidrs = "${var.vpc_subnets_cidrs}"
+  aws_region = "${var.aws_region}"
+}
+
