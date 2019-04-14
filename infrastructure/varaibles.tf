@@ -31,3 +31,34 @@ variable "public_ports" {
   type = "list"
   default = [22, 80, 443]
 }
+
+variable "dev_instance_ssh_key_path" {
+  type = "string"
+}
+
+variable "staging_instance_ssh_key_path" {
+  type = "string"
+}
+
+variable "dev_instance_volume_size" {
+  default = 20
+}
+
+variable "staging_instance_volume_size" {
+  default = 20
+}
+
+variable "instance_ami" {
+  type = "string"
+  default = "ami-0922553b7b0369273"
+}
+
+variable "dev_instance_type" {
+  type = "string"
+  default = "t2.micro"
+}
+
+variable "staging_instance_type" {
+  type = "string"
+  default = "t2.micro"
+}
