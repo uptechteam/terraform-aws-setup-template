@@ -62,3 +62,29 @@ variable "staging_instance_type" {
   type = "string"
   default = "t2.micro"
 }
+
+# RDS
+variable "dev_db_username" {
+  type = "string"
+}
+
+variable "dev_db_password" {
+  type = "string"
+}
+
+variable "dev_db_name" {
+  type = "string"
+}
+
+variable "staging_db_username" {
+  type = "string"
+}
+
+variable "staging_db_password" {
+  type = "string"
+}
+
+variable "staging_db_name" {
+  type = "string"
+}
+

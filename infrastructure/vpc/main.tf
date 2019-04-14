@@ -21,7 +21,7 @@ resource "aws_subnet" "this_private" {
   vpc_id = "${aws_vpc.this_vpc.id}"
   cidr_block = "${var.subnets_cidrs["private"]}"
   map_public_ip_on_launch = "false"
-  availability_zone = "${var.aws_region}a"
+  availability_zone = "${var.aws_region}b"
   tags {
     Name = "${var.name}-private-subnet"
   }

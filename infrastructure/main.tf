@@ -71,3 +71,31 @@ module "staging_instance" {
   volume_size = "${var.staging_instance_volume_size}"
   security_groups = ["${module.security_groups.public-security-group-id}", "${module.security_groups.private-security-group-id}"]
 }
+
+# RDS
+module "dev_postgres" {
+  source = "rds"
+  name = "${var.project_name}"
+
+  env = "dev"
+  subnet_ids = ["${module.vpc.public-subnet-id}", "${module.vpc.private-subnet-id}"]
+  security_group_ids = [
+        "${module.security_groups.open-security-group-id}"
+  ]
+  username = "${var.dev_db_username}"
+  password = "${var.dev_db_password}"
+  db_name = "${var.dev_db_name}"
+}
+
+module "staging_postgres" {
+  source = "rds"
+  name = "${var.project_name}"
+  env = "staging"
+  subnet_ids = ["${module.vpc.public-subnet-id}", "${module.vpc.private-subnet-id}"]
+  security_group_ids = [
+    "${module.security_groups.open-security-group-id}"
+  ]
+  username = "${var.staging_db_username}"
+  password = "${var.staging_db_password}"
+  db_name = "${var.staging_db_name}"
+}
